@@ -1,0 +1,111 @@
+{% extends 'exchange/base.html' %}
+{% load crispy_forms_tags %}
+{% block heading %}
+    <title>Currency Convertor</title>
+    <style>
+
+        h1 {
+            position: relative;
+            left: 43%;
+            bottom: 280px;
+            color: red;
+        }
+
+        h2 {
+            position: relative;
+            left: 43%;
+            bottom: 300px;
+            font-size: 30px;
+        }
+
+        .button {
+            position: relative;
+            left: 12%;
+            width: 70%;
+            top: 270px;
+            font-size: 24px;
+            background-color: rgb(60, 151, 500);
+            color: white;
+            border: none;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            cursor: pointer;
+            margin-left: 19px;
+
+        }
+
+        .button:hover {
+            opacity: 0.8;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15s);
+        }
+
+        #id_from_currency {
+            font-size: 20px;
+        }
+
+        #id_to_currency {
+            font-size: 20px;
+        }
+        #div_id_amount {
+            position: relative;
+            font-size: 30px;
+            left: 25%;
+            top: 190px;
+            margin-bottom: 30px;
+        }
+
+        #div_id_from_currency {
+            position: relative;
+            font-size: 30px;
+            left: 25%;
+            margin-bottom: 30px;
+            top: 210px;
+
+        }
+
+        .karobka {
+            position: relative;
+            width: 650px;
+            height: 500px;
+            left: 600px;
+            background: linear-gradient(to left, blue, red);
+            top: 150px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url(https://www.freeiconspng.com/thumbs/money-png/dollar-flying-money-png-4.png);
+        }
+
+        #div_id_to_currency {
+            position: relative;
+            font-size: 30px;
+            left: 25%;
+            top: 230px;
+
+        }
+        #id_amount {
+            font-size: 20px;
+        }
+    </style>
+{% endblock heading %}
+
+
+{% block content %}
+<div class="karobka">
+    <form class="form" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="button" type="submit">Convert</button>
+
+    </form>
+</div>
+    <h2>Exchange Rate</h2>
+    <h1>{{ res }}</h1>
+
+{% endblock content %}
